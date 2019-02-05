@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">BMI Calculator</string>
+    <string name="title_activity_home">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Guest</string>
+    <string name="nav_header_subtitle">guest@mail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!-- Label for gender information in the editor [CHAR LIMIT=30] -->
+    <string name="category_gender">Gender</string>
+
+
+    <!-- Label for Height Unit -->
+    <string name="height_in_centimeter">cm</string>
+    <string name="height_in_inch">inch</string>
+
+    <!-- Label for Height Unit -->
+    <string name="weight_in_kg">kg</string>
+    <string name="weight_in_pounds">Pounds</string>
+    <string name="response_message">message</string>
+    <string name="reponse_uid">userId</string>
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="no_intermet_connection">No Internet Connection</string>
+    <string name="error_msg_for_required_field">This field is require</string>
+    <string name="refresh">REFRESH</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="headline">To determine if you\'re at a healthy weight, enter the following information and calculate your body mass index (BMI)</string>
+    <string name="overweight">Overweight</string>
+    <string name="_18_6_24_9">18.6 - 24.9</string>
+    <string name="obese">Obese</string>
+    <string name="_25_0_29_9">25.0 - 29.9</string>
+    <string name="_30_0_above">30.0 - above</string>
+    <string name="weight">Weight</string>
+    <string name="healthy">Healthy</string>
+    <string name="_0_0_18_5">0.0 - 18.5</string>
+    <string name="underweight">Underweight</string>
+    <string name="calculate">calculate</string>
+    <string name="cm">cm</string>
+    <string name="height">Height</string>
+</resources>

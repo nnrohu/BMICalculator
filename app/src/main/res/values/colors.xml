@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#32365e</color>
+    <color name="colorPrimaryDark">#061034</color>
+    <color name="colorAccent">#5e608b</color>
+
+    <!-- Primary color for the editor -->
+    <color name="editorColorPrimary">#2D3640</color>
+
+    <!-- Primary dark color for the editor -->
+    <color name="editorColorPrimaryDark">#394450</color>
+
+    <color name="magnitude1">#EE9B47</color>
+
+    <color name="magnitude2">#5AFF5A</color>
+
+    <color name="magnitude3">#F8B76A</color>
+
+    <color name="magnitude4">#F74343</color>
+
+
+
+</resources>

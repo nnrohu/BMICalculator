@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".app.RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="WELCOME"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_reg_full_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:hint="Enter Full Name"
+        android:inputType="text"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/et_reg_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:hint="Enter Email"
+        android:inputType="text"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/et_reg_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@drawable/ic_date_range_black_24dp"
+        android:hint="Enter Age"
+        android:inputType="number"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/et_reg_date_of_birth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@drawable/ic_date_range_black_24dp"
+        android:editable="false"
+        android:ems="10"
+        android:hint="Date of Birth"
+        android:inputType="date"
+        android:padding="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rg_reg_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:checkedButton="@id/rb_reg_male"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_reg_male"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_edittext"
+            android:drawableRight="@drawable/ic_men"
+            android:padding="8dp"
+            android:text="Male" />
+
+        <RadioButton
+            android:id="@+id/rb_reg_female"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_edittext"
+            android:drawableRight="@drawable/ic_women"
+            android:padding="8dp"
+            android:text="Female" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_reg_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_button"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:text="Register" />
+
+        <Button
+            android:id="@+id/bt_reg_as_guest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_button"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:text="guest" />
+
+    </LinearLayout>
+
+</LinearLayout>
