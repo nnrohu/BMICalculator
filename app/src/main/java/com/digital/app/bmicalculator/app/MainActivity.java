@@ -1,6 +1,7 @@
 package com.digital.app.bmicalculator.app;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -134,8 +135,11 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_history:
                 fragment = new HistoryFragment();
                 break;
-            case R.id.action_nearby:
+            case R.id.nav_nearby:
                 fragment = new NearByPlaces();
+                break;
+            case R.id.nav_share:
+                shareApp();
                 break;
            default:
                fragment = new MainFragment();
@@ -150,6 +154,15 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    private void shareApp() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,
+                R.string.share_message);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
     }
 
 
