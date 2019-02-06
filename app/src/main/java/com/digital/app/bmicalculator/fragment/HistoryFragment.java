@@ -100,7 +100,7 @@ public class HistoryFragment extends Fragment {
         private List<HistoryEntry> mHistoryEntry;
 
         // Constant for date format
-        private static final String DATE_FORMAT = "dd.MM.yyyy 'at' HH:mm";
+        private static final String DATE_FORMAT = "dd/MM/yyyy 'at' HH:mm";
         private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
         public HistoryAdapter(Context context) {
