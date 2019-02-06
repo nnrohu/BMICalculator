@@ -266,4 +266,8 @@ public class RegisterActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
     }
+
+    public void test(){
+        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+    }
 }
