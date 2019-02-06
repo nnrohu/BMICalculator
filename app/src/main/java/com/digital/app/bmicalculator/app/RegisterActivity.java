@@ -267,7 +267,4 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void test(){
-        Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
-    }
 }
