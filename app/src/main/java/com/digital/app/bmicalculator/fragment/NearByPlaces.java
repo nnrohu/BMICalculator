@@ -57,8 +57,6 @@ public class NearByPlaces extends Fragment {
     public static final String TAG = NearByPlaces.class.getSimpleName();
     private static final int LOC_REQ_CODE = 1;
 
-    protected GeoDataClient mGeoDataClient;
-    protected PlaceDetectionClient mPlaceDetectionClient;
     protected RecyclerView mRecyclerView;
     private FusedLocationProviderClient mClient;
     private double mLatitudeCurrent;
@@ -90,9 +88,11 @@ public class NearByPlaces extends Fragment {
         pd.show();
 
 
-
-        getCurrentLocation();
-
+        if (isLocationAccessPermitted()) {
+            getCurrentLocation();
+        }else {
+            requestLocationAccessPermission();
+        }
         return view;
     }
 
@@ -120,9 +120,7 @@ public class NearByPlaces extends Fragment {
 
     private void getCurrentPlaceItems() {
         if (isLocationAccessPermitted()) {
-
-                getCurrentPlaceData();
-
+            getCurrentPlaceData();
         } else {
             requestLocationAccessPermission();
         }
@@ -130,31 +128,10 @@ public class NearByPlaces extends Fragment {
 
     @SuppressLint("MissingPermission")
     private void getCurrentPlaceData() {
-//        Collection<String> filterType = new ArrayList<>();
-//        filterType.add(String.valueOf(Place.TYPE_GYM));
-//        PlaceFilter placeFilter = new PlaceFilter(true, filterType);
-//
-//        Task<PlaceLikelihoodBufferResponse> placeResult =  mPlaceDetectionClient.
-//                getCurrentPlace(null);
-//        placeResult.addOnCompleteListener(new OnCompleteListener<PlaceLikelihoodBufferResponse>() {
-//            @Override
-//            public void onComplete(@NonNull Task<PlaceLikelihoodBufferResponse> task) {
-//                Log.d(TAG, "current location places info");
-//                List<Place> placesList = new ArrayList();
-//                PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
-//                for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-//                    placesList.add(placeLikelihood.getPlace().freeze());
-//                }
-//                likelyPlaces.release();
-//                pd.hide();
-//                NearByAdapter adapter = new NearByAdapter(placesList, getContext(), mLatitudeCurrent, mLongitudeCurrent);
-//                mRecyclerView.setAdapter(adapter);
-//            }
-//        });
 
         String baseurl = "https://maps.googleapis.com/maps/api/place/search/json?key=AIzaSyAqnwqLxKUu51LSRZNhj9Rt2KyBW0kmeIY" +
                 "&radius=10000&sensor=true&type=gym&rankBy=distance&location="
-        +mCurrentLocation;
+                + mCurrentLocation;
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
         final StringRequest request = new StringRequest(Request.Method.GET, baseurl,
@@ -166,16 +143,16 @@ public class NearByPlaces extends Fragment {
                         try {
                             JSONObject gym = new JSONObject(response);
                             JSONArray results = gym.getJSONArray("results");
-                            for (int i =0; i < results.length(); i++){
+                            for (int i = 0; i < results.length(); i++) {
                                 JSONObject jsonObject = results.getJSONObject(i);
-                                String name= jsonObject.getString("name");
-                                String address= jsonObject.getString("vicinity");
+                                String name = jsonObject.getString("name");
+                                String address = jsonObject.getString("vicinity");
                                 JSONObject geometry = jsonObject.getJSONObject("geometry");
                                 JSONObject location = geometry.getJSONObject("location");
                                 String latitude = location.getString("lat");
                                 String longitude = location.getString("lng");
 
-                                mNearByGym.add(new NearByGym(name,address, Double.parseDouble(latitude), Double.parseDouble(longitude)));
+                                mNearByGym.add(new NearByGym(name, address, Double.parseDouble(latitude), Double.parseDouble(longitude)));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -230,7 +207,7 @@ public class NearByPlaces extends Fragment {
         TextView placeAddress;
         ImageView placeDirection;
 
-        double lat,lng,tolat,tolng;
+        double lat, lng, tolat, tolng;
 
         public NearByHolder(@NonNull final View itemView) {
             super(itemView);
@@ -279,7 +256,7 @@ public class NearByPlaces extends Fragment {
         public void onBindViewHolder(NearByHolder holder, int position) {
             final NearByGym nearByGym = mPlacesList.get(position);
 
-            float distanceOfPlace = getDistanceOfPlace(nearByGym.getLat(),nearByGym.getLon());
+            float distanceOfPlace = getDistanceOfPlace(nearByGym.getLat(), nearByGym.getLon());
             holder.placeName.setText(nearByGym.getName());
             holder.placeDistance.setText(formatFloatValue(distanceOfPlace) + " km");
             holder.placeAddress.setText(nearByGym.getAddress());
@@ -289,16 +266,6 @@ public class NearByPlaces extends Fragment {
             holder.tolat = nearByGym.getLat();
             holder.tolng = nearByGym.getLon();
 
-//            holder.placeDirection.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String uri = "http://maps.google.com/maps?saddr=" + mLatitudeCurrent + ","
-//                            + mLongitudeCurrent + "&daddr=" + nearByGym.getLat() + "," + nearByGym.getLon();
-//                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-//                            Uri.parse(uri));
-//                    mContext.startActivity(intent);
-//                }
-//            });
         }
 
         private String formatFloatValue(float distanceOfPlace) {
@@ -319,7 +286,7 @@ public class NearByPlaces extends Fragment {
 
             float distance = currentLocation.distanceTo(placeLocation);
 
-            return distance/1000;
+            return distance / 1000;
         }
 
         @Override
